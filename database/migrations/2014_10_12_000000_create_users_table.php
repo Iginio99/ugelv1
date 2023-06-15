@@ -16,7 +16,22 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+       
+            $table->string('ape_paterno');
+            $table->string('ape_materno');
+            $table->string('sexo');
+            $table->string('lugar_nacimiento');
+            $table->string('fecha_nacimiento');
+            $table->string('celular');
+            $table->string('tipo_persona');
+            $table->string('tipo_documento');
+            $table->string('numero_documento');
             $table->string('password');
+            $table->string('departamento');
+            $table->string('provincia');
+            $table->string('distrito');
+            $table->string('direccion');
+
             $table->rememberToken();
             $table->timestamps();
         });

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ActaController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RegistroController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,6 +41,23 @@ Route::controller(ExpedienteController::class)->group(function () {
     Route::put('/update-expediente/.{expediente_id}', 'update');
     Route::delete('/delete-expediente/{expediente_id}','destroy');
     //Route::post('/orders', 'store');
+});
+
+Route::controller(ActaController::class)->group(function () {
+    Route::get('/actas', 'index');
+    Route::get('/add-acta', 'create');
+    Route::post('/add-acta', 'store');
+    //Route::get('/edit-expediente', 'store');
+    Route::get('/edit-acta/{acta_id}','edit');
+    //Route::get('/detail-docente/{docente_id}','detail');
+    Route::put('/update-acta/.{acta_id}', 'update');
+    Route::delete('/delete-acta/{acta_id}','destroy');
+    //Route::post('/orders', 'store');
+});
+
+Route::controller(RegistroController::class)->group(function () {
+    Route::get('/terminos', 'terminos');
+    Route::get('/clausula', 'clausula');
 });
 
 require __DIR__.'/auth.php';

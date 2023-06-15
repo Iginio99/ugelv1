@@ -102,7 +102,7 @@
             <x-input-error :messages="$errors->get('observacion')" class="mt-2" />
         </div>
     </fieldset>
-
+    
         <div>
             <x-form-label for="firma" :value="__('Firma')" />
             <x-form-text id="firma" class="" type="file" name="firma" :value="old('firma')" autofocus />

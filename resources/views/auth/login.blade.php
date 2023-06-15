@@ -1,11 +1,11 @@
-<nav class="py-14 bg-ugel border-b border-black-100">
+<nav class="py-14 bg-sky-100 border-b border-black-100">
     <div class="w-full ">
         <h1 class="font-extrabold text-center flex justify-center text-3xl text-black">
             SISTEMA DE NOTIFICACIONES
         </h1>
     </div>
 </nav>
-<x-guest-layout>
+<x-ventana-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -62,9 +62,9 @@
         </x-primary-button>
     </div>
     </form>
-</x-guest-layout>
+</x-ventana-layout>
 
-<footer class="bg-peda flex p-10">
+<footer class="bg-sky-100 flex p-10">
     <div class="w-1/2">
         <h2 class="font-extrabold text white text-4x1">
             Contactanos:
