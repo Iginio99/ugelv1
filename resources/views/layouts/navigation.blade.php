@@ -1,40 +1,110 @@
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b-8 border-blue-600 ">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links -->
-                
+
+                <!-- inicio -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="url('expedientes')" :active="request()->routeIs('expedientes')">
-                        {{ __('Expedientes') }}
-                    </x-nav-link>
+
+                <!-- EXPEDIENTES -->
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2  rounded-md text-white-500 dark:text-white-400 dark:bg-white-800 hover:text-white-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div>Expedientes</div>
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="url('expedientes')">
+                                {{ __('Expedientes') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="url('expedientes')">
+                                {{ __('Buscar') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="url('actas')" :active="request()->routeIs('actas')">
-                        {{ __('Actas') }}
-                    </x-nav-link>
+
+                <!-- ACTAS -->
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2  rounded-md text-white-500 dark:text-white-400 dark:bg-white-800 hover:text-white-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div>Actas</div>
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="url('actas')">
+                                {{ __('Actas') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="url('actas')">
+                                {{ __('Buscar') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="url('add-expediente')" :active="request()->routeIs('add-expediente')">
-                        {{ __('Prueba') }}
-                    </x-nav-link>
+              
+                <!-- RESOLUCIONES -->
+                <div class="hidden sm:flex sm:items-center sm:ml-6">
+                    <x-dropdown align="left" width="48">
+                        <x-slot name="trigger">
+                            <button
+                                class="inline-flex items-center px-3 py-2  rounded-md text-white-500 dark:text-white-400 dark:bg-white-800 hover:text-white-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                                <div>Resoluciones</div>
+                                <div class="ml-1">
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd"
+                                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </button>
+                        </x-slot>
+                        <x-slot name="content">
+                            <x-dropdown-link :href="url('resoluciones')">
+                                {{ __('Resoluciones') }}
+                            </x-dropdown-link>
+                            <x-dropdown-link :href="url('resoluciones')">
+                                {{ __('Buscar') }}
+                            </x-dropdown-link>
+                        </x-slot>
+                    </x-dropdown>
                 </div>
             </div>
-
+           
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
-
+                            class="inline-flex items-center px-3 py-2  rounded-md text-white-500 dark:text-white-400 dark:bg-white-800 hover:text-white-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150">
+                      
+                            <div class="font-medium text-base text-gray-800 dark:text-gray-200">{{ Auth::user()->name }}</div>
                             <div class="ml-1">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
                                     viewBox="0 0 20 20">

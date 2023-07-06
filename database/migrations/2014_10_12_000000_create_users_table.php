@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('provincia');
             $table->string('distrito');
             $table->string('direccion');
+            $table->string('role');
 
             $table->rememberToken();
             $table->timestamps();

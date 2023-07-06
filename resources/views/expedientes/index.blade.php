@@ -1,4 +1,5 @@
 <x-app-layout>
+    @include('expedientes.buscar')
     @include('expedientes.create')
     <div class="flex justify-center">
         <div class="w-full lg:w-1/2 bg-white shadow-md rounded-lg overflow-hidden">
@@ -9,10 +10,10 @@
                         <th scope="col" class="py-3 px-6">ID</th>
                         <th scope="col" class="py-3 px-6">Nombre</th>
                         <th scope="col" class="py-3 px-6">Apellido Paterno</th>
-                        <th scope="col" class="py-3 px-6">Apellido Materno</th>
                         <th scope="col" class="py-3 px-6">DNI</th>
                         <th scope="col" class="py-3 px-6">Editar</th>
                         <th scope="col" class="py-3 px-6">Borrar</th>
+                        <th scope="col" class="py-3 px-6">PDF</th>
                     </tr>
                 </thead>
                 </tbody>
@@ -21,7 +22,6 @@
                         <td class="py-4 px-6">{{ $expediente->id }}</td>
                         <td class="py-4 px-6">{{ $expediente->nombres }}</td>
                         <td class="py-4 px-6">{{ $expediente->ap_paterno }}</td>
-                        <td class="py-4 px-6">{{ $expediente->ap_materno }}</td>
                         <td class="py-4 px-6">{{ $expediente->dni }}</td>
                         <td class="py-4 px-8">
                             <a href="{{ url('/edit-expediente/' . $expediente->id) }}" name="create-outline"
@@ -36,6 +36,12 @@
                                 @method('DELETE')
                                 <x-primary-button class="ml-2">Eliminar</x-primary-button>
                             </form>
+                        </td>
+                        <td class="py-4 px-8">
+                            <a href="{{ url('/pdf/' . $expediente->id) }}" name="create-outline"
+                                class="mx-8">
+                                <ion-icon name="document-text-outline"></ion-icon>
+                            </a>
                         </td>
                     </tr>
                 @empty

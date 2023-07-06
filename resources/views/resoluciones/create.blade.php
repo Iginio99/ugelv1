@@ -1,95 +1,109 @@
 <div class="max-w-3xl mx-auto">
-    <h3 class="px-6 py-4 font-bold">Registro de actas</h3>
+    <h3 class="px-6 py-4 font-bold">Registro de resoluciones</h3>
 
-    <form method="POST" action="{{ url('add-acta') }}" enctype="multipart/form-data"
+    <form method="POST" action="{{ url('add-expediente') }}" enctype="multipart/form-data"
         class="grid grid-cols-3 gap-6 bg-white shadow-md rounded-lg py-8">
         @csrf
         <fieldset class="border border-gray-300 p-4">
             <legend class="text-base font-medium text-gray-700">Información Personal</legend>
             <div>
                 <x-form-label for="dni" :value="__('DNI')" />
-                <x-form-text id="dni" class="" type="text" name="dni" :value="old('dni')" required autofocus autocomplete="dni" />
+                <x-form-text id="dni" class="" type="text" name="dni" :value="old('dni')" autofocus />
                 <x-input-error :messages="$errors->get('dni')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
             <div>
                 <x-form-label for="ap_paterno" :value="__('Apellido Paterno')" />
                 <x-form-text id="ap_paterno" class="" type="text" name="ap_paterno" :value="old('ap_paterno')"
-                required autofocus autocomplete="ap_paterno" />
+                    autofocus />
                 <x-input-error :messages="$errors->get('ap_paterno')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
             <div>
                 <x-form-label for="ap_materno" :value="__('Apellido Materno')" />
                 <x-form-text id="ap_materno" class="" type="text" name="ap_materno" :value="old('ap_materno')"
-                required autofocus autocomplete="ap_materno" />
+                    autofocus />
                 <x-input-error :messages="$errors->get('ap_materno')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
 
             <div>
                 <x-form-label for="nombres" :value="__('Nombres')" />
-                <x-form-text id="nombres" class="" type="text" name="nombres" :value="old('nombres')" required autofocus autocomplete="nombres" />
+                <x-form-text id="nombres" class="" type="text" name="nombres" :value="old('nombres')" autofocus />
                 <x-input-error :messages="$errors->get('nombres')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
+        </fieldset>
+        <fieldset class="border border-gray-300 p-4">
+            <legend class="text-base font-medium text-gray-700">Datos de Resolución </legend>
             <div>
                 <x-form-label for="tipo_doc" :value="__('Tipo de Documento')" />
                 <x-form-text id="tipo_doc" class="" type="text" name="tipo_doc" :value="old('tipo_doc')"
-                required autofocus autocomplete="tipo_doc" />
+                    autofocus />
                 <x-input-error :messages="$errors->get('tipo_doc')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
             <div>
-                <x-form-label for="subtipo_doc" :value="__('SubTipo de Documento')" />
-                <x-form-text id="subtipo_doc" class="" type="text" name="subtipo_doc" :value="old('subtipo_doc')"
-                required autofocus autocomplete="subtipo_doc" />
-                <x-input-error :messages="$errors->get('subtipo_doc')"
-                    class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
-            </div>
-            <div>
                 <x-form-label for="numero" :value="__('Número de Documento')" />
-                <x-form-text id="numero" class="" type="text" name="numero" :value="old('numero')" required autofocus autocomplete="numero" />
+                <x-form-text id="numero" class="" type="text" name="numero" :value="old('numero')" autofocus />
                 <x-input-error :messages="$errors->get('numero')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
-        </fieldset>
 
-        <fieldset class="border border-gray-300 p-4">
-            <legend class="text-base font-medium text-gray-700">Datos de actas </legend>
-            
+
+
             <div>
                 <x-form-label for="periodo1" :value="__('Periodo')" />
                 <x-form-text id="periodo1" class="" type="text" name="periodo1" :value="old('periodo1')"
-                required autofocus autocomplete="periodo1" />
+                    autofocus />
                 <x-input-error :messages="$errors->get('periodo1')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
             <div>
-                <x-form-label for="fecha_doc" :value="__('Fecha de acta a devolver')" />
-                <x-form-text id="fecha_doc" class="" type="date" name="fecha_doc" :value="old('fecha_doc')"
-                required autofocus autocomplete="fecha_doc" />
-                <x-input-error :messages="$errors->get('fecha_doc')"
+                <x-form-label for="fecha_de_exp_a_devolver" :value="__('Fecha de expediente a devolver')" />
+                <x-form-text id="fecha_de_exp_a_devolver" class="" type="date" name="fecha_de_exp_a_devolver"
+                    :value="old('fecha_de_exp_a_devolver')" autofocus />
+                <x-input-error :messages="$errors->get('fecha_de_exp_a_devolver')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
             <div>
-                <x-form-label for="insitucion" :value="__('Institución')" />
-                <x-form-text id="insitucion" class="" type="text" name="insitucion" :value="old('insitucion')"
-                required autofocus autocomplete="insitucion" />
-                <x-input-error :messages="$errors->get('insitucion')"
+                <x-form-label for="proveido" :value="__('Proveido')" />
+                <x-form-text id="proveido" class="" type="text" name="proveido" :value="old('proveido')"
+                    autofocus />
+                <x-input-error :messages="$errors->get('proveido')"
                     class="border border-gray-300 rounded-md py-2 px-4 w-full focus:outline-none focus:ring-blue-500 focus:border-blue-500" />
             </div>
             <div>
-                <x-form-label for="distrito" :value="__('Distrito')" />
-                <x-form-text id="distrito" class="" type="text" name="distrito" :value="old('distrito')"
-                required autofocus autocomplete="distrito" />
-                <x-input-error :messages="$errors->get('distrito')" class="mt-2" />
+                <x-form-label for="fecha_proveido" :value="__('Fecha proveido')" />
+                <x-form-text id="fecha_proveido" class="" type="date" name="fecha_proveido" :value="old('fecha_proveido')"
+                    autofocus />
+                <x-input-error :messages="$errors->get('fecha_proveido')" class="mt-2" />
+            </div>
+            <div>
+                <x-form-label for="num_exp_solicitud_devolucion" :value="__('N° exp solicitud de devolución')" />
+                <x-form-text id="num_exp_solicitud_devolucion" class="" type="text"
+                    name="num_exp_solicitud_devolucion" :value="old('num_exp_solicitud_devolucion')" autofocus />
+                <x-input-error :messages="$errors->get('num_exp_solicitud_devolucion')" class="mt-2" />
+            </div>
+            <div>
+                <x-form-label for="periodo2" :value="__('Periodo')" />
+                <x-form-text id="periodo2" class="" type="text" name="periodo2" :value="old('periodo2')"
+                    autofocus />
+                <x-input-error :messages="$errors->get('periodo2')" class="mt-2" />
+            </div>
+            <div>
+                <x-form-label for="fecha_devolucion" :value="__('Fecha devolución')" />
+                <x-form-text id="fecha_devolucion" class="" type="date" name="fecha_devolucion"
+                    :value="old('fecha_devolucion')" autofocus />
+                <x-input-error :messages="$errors->get('fecha_devolucion')" class="mt-2" />
             </div>
             <div>
                 <x-form-label for="fecha_registro" :value="__('Fecha Registro')" />
                 <x-form-text id="fecha_registro" class="" type="date" name="fecha_registro" :value="old('fecha_registro')"
-                required autofocus autocomplete="fecha_registro" />
+                    autofocus />
                 <x-input-error :messages="$errors->get('fecha_registro')" class="mt-2" />
+            </div>
+            <div>
             </div>
         </fieldset>
         <fieldset class="border border-gray-300 p-4">
@@ -97,21 +111,21 @@
             <div>
                 <x-form-label for="observacion" :value="__('Observacion')" />
                 <x-form-text id="observacion" class="" type="text" name="observacion" :value="old('observacion')"
-                required autofocus autocomplete="observacion" />
+                    autofocus />
                 <x-input-error :messages="$errors->get('observacion')" class="mt-2" />
             </div>
         </fieldset>
 
+       
         <div>
             <x-form-label for="firma" :value="__('Firma')" />
-            @include('actas.firma')
-        </div>
-        
-        <div>
+            @include('resoluciones.firma')
         </div>
         <div>
-            
-            <x-form-text id="foto" class="" type="file" name="foto" :value="old('foto')" required autofocus autocomplete="foto" />
+        </div>
+        <div>
+            <x-form-label for="foto" :value="__('Foto')" />
+            <x-form-text id="foto" class="" type="file" name="foto" :value="old('foto')" autofocus />
             <x-input-error :messages="$errors->get('foto')" class="mt-2" />
         </div>
         <div class="col-span-2">

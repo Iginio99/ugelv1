@@ -2,45 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ExpedienteBuscarRequest;
-use App\Http\Requests\ExpedienteRequest;
-use App\Models\Expediente;
-use Dompdf\Dompdf;
+use App\Http\Requests\ResolucionBuscarRequest;
+use App\Http\Requests\ResolucionRequest;
+use App\Models\Resolucion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
-class ExpedienteController extends Controller
+class ResolucionController extends Controller
 {
     public function index()
     {
-        $expedientes = Expediente::all();
-        return view('expedientes.index', compact('expedientes'));
+        $resoluciones = Resolucion::all();
+        return view('resoluciones.index', compact('resoluciones'));
     }
 
-    public function generatePDF($expediente_id)
-    {
-        $expediente = Expediente::find($expediente_id);
-        $pdf = new Dompdf();
-        $pdf->loadHtml(view('expedientes.pdf', compact('expediente')));
-        $pdf->render();
-        return $pdf->stream('document.pdf');
-    }
-
-    public function buscar(ExpedienteBuscarRequest $request)
+    public function buscar(ResolucionBuscarRequest $request)
     {
         $data = $request->validated();
-        $expedientes = Expediente::all()->where('dni', $data['dni']);
+        $resoluciones = Resolucion::all()->where('dni', $data['dni']);
         //$acta = Acta::find(1);
-        return view('expedientes.index', compact('expedientes'));
+        return view('resoluciones.index', compact('resoluciones'));
     }
 
     public function create()
     {
-        return view('expedientes.create');
+        return view('resoluciones.create');
     }
 
-    public function store(ExpedienteRequest $request)
+    public function store(ResolucionRequest $request)
     {
         $data = $request->validated();
         $data['idUsuario'] = Auth::user()->id;
@@ -59,28 +49,28 @@ class ExpedienteController extends Controller
             $image->save($imagePath);
         }
 
-        $expediente = Expediente::create($data);
-        return redirect('/expedientes')->with('message', 'agregado');
+        $resolucion = Resolucion::create($data);
+        return redirect('/resoluciones')->with('message', 'agregado');
     }
 
-    public function edit($expediente_id)
+    public function edit($resolucion_id)
     {
-        $expediente = Expediente::find($expediente_id);
+        $resolucion = Resolucion::find($resolucion_id);
 
-        return view('expedientes.edit', compact('expediente'));
+        return view('resoluciones.edit', compact('resolucion'));
     }
 
-    public function detail($expediente_id)
+    public function detail($resolucion_id)
     {
-        return view('docente.detail');
+        return view('resoluciones.detail');
     }
 
-    public function update(ExpedienteRequest $request, $expediente_id)
+    public function update(ResolucionRequest $request, $resolucion_id)
     {
 
         $data = $request->validated();
 
-        $docente = Expediente::where('id', $expediente_id)->update([
+        $docente = Resolucion::where('id', $resolucion_id)->update([
             'dni' => $data['dni'],
             'ap_paterno' => $data['ap_paterno'],    
             'ap_materno' => $data['ap_materno'],
@@ -101,13 +91,13 @@ class ExpedienteController extends Controller
             'idUsuario' => Auth::user()->id,
         ]);
 
-        return redirect('/expedientes')->with('message', 'Datos actualizados');
+        return redirect('/resoluciones')->with('message', 'Datos actualizados');
         //return redirect('/add-docente')->with('message','Docente agregado');
     }
 
-    public function destroy($expediente_id)
+    public function destroy($resolucion_id)
     {
-        $docente = Expediente::find($expediente_id)->delete();
-        return redirect('/expedientes')->with('message', 'Docente eliminado');
+        $resolucion = Resolucion::find($resolucion_id)->delete();
+        return redirect('/resoluciones')->with('message', 'Docente eliminado');
     }
 }

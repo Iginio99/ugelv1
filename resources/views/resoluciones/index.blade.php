@@ -1,9 +1,8 @@
 <x-app-layout>
-    @include('actas.buscar')
-    @include('actas.create')
+    @include('resoluciones.create')
     <div class="flex justify-center">
         <div class="w-full lg:w-1/2 bg-white shadow-md rounded-lg overflow-hidden">
-            <h1 class="px-6 py-4 font-bold">Tabla de actas</h1>
+            <h1 class="px-6 py-4 font-bold">Tabla de Resoluciones</h1>
             <table class="w-full">
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
@@ -13,25 +12,25 @@
                         <th scope="col" class="py-3 px-6">Apellido Materno</th>
                         <th scope="col" class="py-3 px-6">DNI</th>
                         <th scope="col" class="py-3 px-6">Editar</th>
-                        <th scope="col" class="py-3 px-6">Borrar</th>
+                        <th scope="col" class="py-3 px-6">Eliminar</th>
                     </tr>
                 </thead>
                 </tbody>
-                @forelse ($actas as $acta)
+                @forelse ($resoluciones as $resolucion)
                     <tr class="bg-gray-100 border-b border-black">
-                        <td class="py-4 px-6">{{ $acta->id }}</td>
-                        <td class="py-4 px-6">{{ $acta->nombres }}</td>
-                        <td class="py-4 px-6">{{ $acta->ap_paterno }}</td>
-                        <td class="py-4 px-6">{{ $acta->ap_materno }}</td>
-                        <td class="py-4 px-6">{{ $acta->dni }}</td>
+                        <td class="py-4 px-6">{{ $resolucion->id }}</td>
+                        <td class="py-4 px-6">{{ $resolucion->nombres }}</td>
+                        <td class="py-4 px-6">{{ $resolucion->ap_paterno }}</td>
+                        <td class="py-4 px-6">{{ $resolucion->ap_materno }}</td>
+                        <td class="py-4 px-6">{{ $resolucion->dni }}</td>
                         <td class="py-4 px-8">
-                            <a href="{{ url('/edit-acta/' . $acta->id) }}" name="create-outline"
+                            <a href="{{ url('/edit-resolucion/' . $resoluciones->id) }}" name="create-outline"
                                 class="mx-8">
                                 <ion-icon name="create-outline"></ion-icon>
                             </a>
                         </td>
                         <td class="py-4 px-8">
-                            <form action="{{ url('delete-acta/' . $acta->id) }}" method="POST">
+                            <form action="{{ url('delete-resolucion/' . $resoluciones->id) }}" method="POST">
 
                                 @csrf
                                 @method('DELETE')
